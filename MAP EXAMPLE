@@ -1,0 +1,62 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOLYETnXsZFY/oD71wPNDFs",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Chandrika-web-09/PYSPARK-WORKSPACE-CHANDRIKA/blob/main/MAP%20EXAMPLE\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from pyspark.sql import SparkSession\n",
+        "\n",
+        "spark = SparkSession.builder.master(\"local\").appName(\"FIRST_EXECUTION\").getOrCreate()\n",
+        "\n",
+        "sc = spark.sparkContext\n",
+        "\n",
+        "rdd = spark.sparkContext.parallelize([1, 2, 3])\n",
+        "\n",
+        "result = rdd.map(lambda x: x * 2)\n",
+        "print(result.collect())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "101QTInkvpPu",
+        "outputId": "f6085c6a-d564-4597-a312-bec0c1fef524"
+      },
+      "execution_count": 26,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[2, 4, 6]\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
