@@ -1,0 +1,66 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNKBWSYn6xANJC29kVNF/qv",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Chandrika-web-09/PYSPARK-WORKSPACE-CHANDRIKA/blob/main/Print%20count%20of%20each%20word\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from pyspark.sql import SparkSession\n",
+        "\n",
+        "spark = SparkSession.builder.master(\"local\").appName(\"FIRST_EXECUTION\").getOrCreate()\n",
+        "\n",
+        "sc = spark.sparkContext\n",
+        "\n",
+        "list1 = [\"Hello\", \"World\", \"Students\", \"Hello\", \"Students\", \"World\", \"World\", \"Hello\", \"Hello\"]\n",
+        "rdd = sc.parallelize(list1)\n",
+        "rdd1 = rdd.map(lambda x: (x,1))\n",
+        "rdd2 = rdd1.reduceByKey(lambda x, y: x+y)\n",
+        "rdd2.collect()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "101QTInkvpPu",
+        "outputId": "7739f74b-876d-4463-b8d9-f1e126be75bd"
+      },
+      "execution_count": 37,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[('Hello', 4), ('World', 3), ('Students', 2)]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 37
+        }
+      ]
+    }
+  ]
+}
