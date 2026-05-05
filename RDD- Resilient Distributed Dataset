@@ -1,0 +1,82 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOpieFDXTMW7ZnYVKYNN0WT",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Chandrika-web-09/PYSPARK-WORKSPACE-CHANDRIKA/blob/main/RDD-%20Resilient%20Distributed%20Dataset\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 15,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "TnTKu5Mx3gnV",
+        "outputId": "23e32acd-2daa-4e91-8375-2887156669bb"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[2, 4, 6, 8, 10]\n"
+          ]
+        }
+      ],
+      "source": [
+        "from pyspark.sql import SparkSession\n",
+        "\n",
+        "spark = SparkSession.builder.appName(\"RDD Example\").getOrCreate()\n",
+        "\n",
+        "# Create RDD\n",
+        "rdd = spark.sparkContext.parallelize([1, 2, 3, 4, 5])\n",
+        "\n",
+        "# Transformation\n",
+        "rdd2 = rdd.map(lambda x: x * 2)\n",
+        "\n",
+        "# Action\n",
+        "print(rdd2.collect())"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "dxV6yQ5NRoHH"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "RMIOo4KM6bPq"
+      },
+      "execution_count": 2,
+      "outputs": []
+    }
+  ]
+}
