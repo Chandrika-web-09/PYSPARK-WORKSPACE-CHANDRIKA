@@ -1,0 +1,95 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNS3pmfadIo0RzgCszuMTig",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Chandrika-web-09/PYSPARK-WORKSPACE-CHANDRIKA/blob/main/DF%20-%20Data%20Frame\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 16,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "TnTKu5Mx3gnV",
+        "outputId": "30e78d1f-05b2-4006-b4f6-f0a517214480"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "+-----+---+\n",
+            "| Name|Age|\n",
+            "+-----+---+\n",
+            "|Alice| 25|\n",
+            "|  Bob| 30|\n",
+            "|Cathy| 22|\n",
+            "+-----+---+\n",
+            "\n",
+            "+-----+---+\n",
+            "| Name|Age|\n",
+            "+-----+---+\n",
+            "|Alice| 25|\n",
+            "|  Bob| 30|\n",
+            "+-----+---+\n",
+            "\n"
+          ]
+        }
+      ],
+      "source": [
+        "from pyspark.sql import SparkSession\n",
+        "\n",
+        "spark = SparkSession.builder.appName(\"DataFrame Example\").getOrCreate()\n",
+        "\n",
+        "# Create DataFrame\n",
+        "data = [(\"Alice\", 25), (\"Bob\", 30), (\"Cathy\", 22)]\n",
+        "df = spark.createDataFrame(data, [\"Name\", \"Age\"])\n",
+        "\n",
+        "# Operations\n",
+        "df.show()\n",
+        "df.filter(df.Age > 23).show()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "dxV6yQ5NRoHH"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "RMIOo4KM6bPq"
+      },
+      "execution_count": 2,
+      "outputs": []
+    }
+  ]
+}
