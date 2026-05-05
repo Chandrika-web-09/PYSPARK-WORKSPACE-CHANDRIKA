@@ -1,0 +1,62 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPHN5pHNnm8LqF3MqGzRv4k",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Chandrika-web-09/PYSPARK-WORKSPACE-CHANDRIKA/blob/main/FLATMAP%20EXAMPLE\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from pyspark.sql import SparkSession\n",
+        "\n",
+        "spark = SparkSession.builder.master(\"local\").appName(\"FIRST_EXECUTION\").getOrCreate()\n",
+        "\n",
+        "sc = spark.sparkContext\n",
+        "\n",
+        "rdd = spark.sparkContext.parallelize([\"hello world\", \"hi\"])\n",
+        "\n",
+        "result = rdd.flatMap(lambda x: x.split(\" \"))\n",
+        "print(result.collect())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "101QTInkvpPu",
+        "outputId": "0595b029-ac0e-4d8a-dce3-be8ba5595787"
+      },
+      "execution_count": 27,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['hello', 'world', 'hi']\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
