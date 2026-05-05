@@ -1,0 +1,84 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPpxICsOCSLV0e4c//E71Au",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Chandrika-web-09/PYSPARK-WORKSPACE-CHANDRIKA/blob/main/RDD%20WITH%20LIST\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from pyspark.sql import SparkSession\n",
+        "\n",
+        "# Create SparkSession\n",
+        "spark = SparkSession.builder.master(\"local\").appName(\"FIRST_EXECUTION\").getOrCreate()\n",
+        "\n",
+        "# Get SparkContext\n",
+        "sc = spark.sparkContext\n",
+        "\n",
+        "# Create data (use list, not tuple for clarity)\n",
+        "list1 = [1,2,3,4,5,6,7,8,9]\n",
+        "print(type(list1))\n",
+        "\n",
+        "# Create RDD\n",
+        "rdd1 = sc.parallelize(list1)\n",
+        "print(type(rdd1))\n",
+        "\n",
+        "# Filter RDD\n",
+        "rdd2 = rdd1.filter(lambda x: x >= 5)\n",
+        "\n",
+        "# Action\n",
+        "rdd2.collect()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "101QTInkvpPu",
+        "outputId": "2769ed69-33d9-4618-8319-31cdc8693f5c"
+      },
+      "execution_count": 25,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "<class 'list'>\n",
+            "<class 'pyspark.core.rdd.RDD'>\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "[5, 6, 7, 8, 9]"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 25
+        }
+      ]
+    }
+  ]
+}
